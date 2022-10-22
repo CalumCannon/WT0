@@ -1,0 +1,9 @@
+C:\Users\calbo\Documents\WT0\.mono\temp\obj\Debug\WT0.csproj.AssemblyReference.cache
+C:\Users\calbo\Documents\WT0\.mono\temp\obj\Debug\WT0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\calbo\Documents\WT0\.mono\temp\obj\Debug\WT0.AssemblyInfoInputs.cache
+C:\Users\calbo\Documents\WT0\.mono\temp\obj\Debug\WT0.AssemblyInfo.cs
+C:\Users\calbo\Documents\WT0\.mono\temp\obj\Debug\WT0.csproj.CoreCompileInputs.cache
+C:\Users\calbo\Documents\WT0\.mono\temp\bin\Debug\WT0.dll
+C:\Users\calbo\Documents\WT0\.mono\temp\bin\Debug\WT0.pdb
+C:\Users\calbo\Documents\WT0\.mono\temp\obj\Debug\WT0.dll
+C:\Users\calbo\Documents\WT0\.mono\temp\obj\Debug\WT0.pdb

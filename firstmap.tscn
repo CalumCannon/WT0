@@ -1,0 +1,573 @@
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://Sprites/FloorSprites/tiletemplate_large.png" type="Texture" id=1]
+[ext_resource path="res://MapGenerator.cs" type="Script" id=2]
+[ext_resource path="res://Player.cs" type="Script" id=3]
+[ext_resource path="res://Sprites/CharacterSprites/dude.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/2D Lights/FullScreenLight.png" type="Texture" id=5]
+[ext_resource path="res://DayNightFilter.cs" type="Script" id=6]
+[ext_resource path="res://Sprites/FloorSprites/desert_large.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Structures/Walls/BasicWall.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/FloorSprites/iron_large.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/CharacterSprites/HazardMan/HManAngles.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/UISprites/DayNight/DayNight.png" type="Texture" id=11]
+[ext_resource path="res://TimeOfDay.cs" type="Script" id=12]
+[ext_resource path="res://Fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://GameController.cs" type="Script" id=14]
+[ext_resource path="res://Sprites/Structures/House/house.png" type="Texture" id=15]
+[ext_resource path="res://OXYGEN.cs" type="Script" id=16]
+[ext_resource path="res://ResourceMap.cs" type="Script" id=17]
+[ext_resource path="res://Sprites/Maps/new_image.tres" type="Image" id=18]
+[ext_resource path="res://Structures.cs" type="Script" id=19]
+[ext_resource path="res://HEALTH.cs" type="Script" id=20]
+[ext_resource path="res://EnemyPrefab.cs" type="Script" id=21]
+[ext_resource path="res://Sprites/CharacterSprites/Bugs/Bug.png" type="Texture" id=22]
+[ext_resource path="res://BugController.cs" type="Script" id=23]
+[ext_resource path="res://BulletHolder.gd" type="Script" id=24]
+[ext_resource path="res://Prefabs/Bullets/Bullet.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Sprites/CharacterSprites/Turrets/DevTurret.png" type="Texture" id=26]
+[ext_resource path="res://TurretPrefab.gd" type="Script" id=27]
+[ext_resource path="res://Sprites/CharacterSprites/HazardMan/Animations/Sheets/Full.png" type="Texture" id=28]
+
+[sub_resource type="ConvexPolygonShape2D" id=122]
+points = PoolVector2Array( 224, 192, 32, 96, 32, 0, 224, 96 )
+
+[sub_resource type="ConvexPolygonShape2D" id=128]
+points = PoolVector2Array( 32, 128, 32, 96, 224, 0, 384, 96, 384, 320, 224, 416, 32, 320 )
+
+[sub_resource type="TileSet" id=116]
+0/name = "Wall"
+0/texture = ExtResource( 8 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 64, 0, 288, 224 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 122 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 122 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "house.png 1"
+1/texture = ExtResource( 15 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 288, 64, 416, 416 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 128 )
+1/shape_one_way = true
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": true,
+"one_way_margin": 1.0,
+"shape": SubResource( 128 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=1]
+0/name = "Base Tile"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 480, 256 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "desert"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 288, 160 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "iron_large.png 2"
+2/texture = ExtResource( 9 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 288, 160 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+
+[sub_resource type="Animation" id=133]
+resource_name = "Down"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=135]
+resource_name = "DownLeft"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 48, 49, 50, 51, 52, 53, 54, 55 ]
+}
+
+[sub_resource type="Animation" id=141]
+resource_name = "DownLeft_S"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 65 ]
+}
+
+[sub_resource type="Animation" id=134]
+resource_name = "DownRight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18, 19, 20, 21, 22, 23 ]
+}
+
+[sub_resource type="Animation" id=142]
+resource_name = "DownRight_S"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 66 ]
+}
+
+[sub_resource type="Animation" id=143]
+resource_name = "Down_S"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 64 ]
+}
+
+[sub_resource type="Animation" id=136]
+resource_name = "Left"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 41, 42, 43, 44, 45, 46, 47 ]
+}
+
+[sub_resource type="Animation" id=144]
+resource_name = "Left_S"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 67 ]
+}
+
+[sub_resource type="Animation" id=129]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 24 ]
+}
+
+[sub_resource type="Animation" id=137]
+resource_name = "Right"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=140]
+resource_name = "Right_S"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 68 ]
+}
+
+[sub_resource type="Animation" id=130]
+resource_name = "Up"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 25, 26, 27, 28, 29, 30, 31 ]
+}
+
+[sub_resource type="Animation" id=131]
+resource_name = "UpLeft"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 32, 33, 34, 35, 36, 37, 38, 39 ]
+}
+
+[sub_resource type="Animation" id=132]
+resource_name = "UpRight"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 56, 57, 58, 59, 60, 61, 62, 63 ]
+}
+
+[sub_resource type="Animation" id=139]
+resource_name = "UpRight_S"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 71 ]
+}
+
+[sub_resource type="Animation" id=138]
+resource_name = "Up_S"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 6.16536e-07 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 69 ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 62, 58.5 )
+
+[sub_resource type="DynamicFont" id=123]
+size = 64
+font_data = ExtResource( 13 )
+
+[node name="GameController" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="MapGenerator" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Structures" type="TileMap" parent="."]
+z_index = 1
+mode = 1
+tile_set = SubResource( 116 )
+cell_size = Vector2( 255, 128 )
+show_collision = true
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -196610, 1, 0, -4, 0, 0, -65536, 0, 0, -65532, 0, 0, 196603, 0, 0, 196610, 0, 0 )
+script = ExtResource( 19 )
+
+[node name="Ground" type="TileMap" parent="."]
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 255, 128 )
+centered_textures = true
+format = 1
+script = ExtResource( 17 )
+mapImage2 = ExtResource( 18 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+z_index = 2
+script = ExtResource( 3 )
+speed = 350
+walkspeed = 5
+
+[node name="PlayerSprite" type="Sprite" parent="Player"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+hframes = 8
+vframes = 9
+frame = 24
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/Down = SubResource( 133 )
+anims/DownLeft = SubResource( 135 )
+anims/DownLeft_S = SubResource( 141 )
+anims/DownRight = SubResource( 134 )
+anims/DownRight_S = SubResource( 142 )
+anims/Down_S = SubResource( 143 )
+anims/Left = SubResource( 136 )
+anims/Left_S = SubResource( 144 )
+anims/RESET = SubResource( 129 )
+anims/Right = SubResource( 137 )
+anims/Right_S = SubResource( 140 )
+anims/Up = SubResource( 130 )
+anims/UpLeft = SubResource( 131 )
+anims/UpRight = SubResource( 132 )
+anims/UpRight_S = SubResource( 139 )
+anims/Up_S = SubResource( 138 )
+
+[node name="PlayerSprite OLD" type="Sprite" parent="Player"]
+visible = false
+position = Vector2( 2.9243, -3.05176e-05 )
+texture = ExtResource( 10 )
+hframes = 8
+frame = 7
+region_rect = Rect2( 978, 167, 1, 0 )
+
+[node name="Dude" type="Sprite" parent="Player/PlayerSprite OLD"]
+visible = false
+scale = Vector2( 0.422682, 0.384127 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
+current = true
+zoom = Vector2( 2, 2 )
+script = ExtResource( 6 )
+
+[node name="Light2D" type="Light2D" parent="Player/Camera2D"]
+scale = Vector2( 1.08854, 1.1463 )
+texture = ExtResource( 5 )
+color = Color( 0.972549, 1, 0.172549, 0.243137 )
+mode = 2
+__meta__ = {
+"_editor_description_": "l"
+}
+
+[node name="UI" type="Node2D" parent="Player"]
+
+[node name="TimeOfDay" type="Node2D" parent="Player/UI"]
+script = ExtResource( 12 )
+DayNightTick = 0.001
+
+[node name="DayNight" type="Sprite" parent="Player/UI/TimeOfDay"]
+position = Vector2( 873, -595 )
+scale = Vector2( 0.428, 0.428 )
+z_index = 1
+texture = ExtResource( 11 )
+
+[node name="HEALTH" type="Label" parent="Player/UI"]
+margin_left = -1018.0
+margin_top = -369.0
+margin_right = -714.0
+margin_bottom = -283.0
+custom_fonts/font = SubResource( 123 )
+text = "HEALTH :"
+script = ExtResource( 20 )
+
+[node name="IRON" type="Label" parent="Player/UI"]
+margin_left = -1018.0
+margin_top = -436.0
+margin_right = -790.0
+margin_bottom = -350.0
+custom_fonts/font = SubResource( 123 )
+text = "IRON: "
+
+[node name="OXYGEN" type="Label" parent="Player/UI"]
+margin_left = -1020.0
+margin_top = -598.0
+margin_right = -716.0
+margin_bottom = -512.0
+custom_fonts/font = SubResource( 123 )
+text = "OXYGEN :"
+script = ExtResource( 16 )
+
+[node name="BASEPOWER" type="Label" parent="Player/UI"]
+margin_left = -1019.0
+margin_top = -520.0
+margin_right = -639.0
+margin_bottom = -434.0
+custom_fonts/font = SubResource( 123 )
+text = "BASE POWER : 100%"
+
+[node name="BugController" type="Node" parent="."]
+script = ExtResource( 23 )
+
+[node name="TurretPrefab" type="StaticBody2D" parent="."]
+position = Vector2( -471, 140 )
+collision_layer = 2
+script = ExtResource( 27 )
+
+[node name="Sprite" type="Sprite" parent="TurretPrefab"]
+texture = ExtResource( 26 )
+
+[node name="SpriteHolder" type="Node" parent="."]
+
+[node name="Bullets" type="Node" parent="SpriteHolder"]
+script = ExtResource( 24 )
+
+[node name="Bullet" parent="." instance=ExtResource( 25 )]
+visible = false
+
+[node name="EnemyHolder" type="Node2D" parent="."]
+
+[node name="EnemyPrefab" type="Node2D" parent="EnemyHolder"]
+position = Vector2( -1387, -730 )
+script = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="EnemyHolder/EnemyPrefab"]
+texture = ExtResource( 22 )

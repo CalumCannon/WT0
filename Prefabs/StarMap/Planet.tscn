@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/Maps/Map002.bmp" type="Texture" id=1]
+[ext_resource path="res://Sprites/StarMap/Planets/p1.png" type="Texture" id=2]
+[ext_resource path="res://Planet.gd" type="Script" id=3]
+[ext_resource path="res://PlanetButton.gd" type="Script" id=4]
+
+[node name="Planet" type="Node"]
+script = ExtResource( 3 )
+
+[node name="PlanetButton" type="TextureButton" parent="."]
+margin_left = 404.0
+margin_top = 261.0
+margin_right = 904.0
+margin_bottom = 761.0
+rect_scale = Vector2( 0.12, 0.12 )
+texture_normal = ExtResource( 2 )
+script = ExtResource( 4 )
+
+[node name="MapDisplay" type="Sprite" parent="PlanetButton"]
+position = Vector2( 783.327, -274.781 )
+scale = Vector2( 3, 3 )
+z_index = 25
+texture = ExtResource( 1 )
+
+[connection signal="button_up" from="PlanetButton" to="PlanetButton" method="_on_PlanetButton_button_up"]
+[connection signal="mouse_entered" from="PlanetButton" to="." method="_on_PlanetButton_mouse_entered"]
+[connection signal="mouse_exited" from="PlanetButton" to="." method="_on_PlanetButton_mouse_exited"]

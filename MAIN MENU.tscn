@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Start.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/StarMap/BGs/SM_BG.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/Roboto_Mono/RobotoMono-Italic-VariableFont_wght.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Fonts/Roboto_Mono/RobotoMono-Italic-VariableFont_wght.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 106
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 3 )
+
+[node name="MAIN MENU" type="Node2D"]
+
+[node name="BG" type="Sprite" parent="."]
+scale = Vector2( 0.55, 0.58 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Start" type="Button" parent="BG"]
+anchor_right = 0.431
+anchor_bottom = 0.085
+margin_left = 474.546
+margin_top = 736.207
+margin_right = 557.546
+margin_bottom = 791.407
+custom_fonts/font = SubResource( 3 )
+text = "begin"
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Game start"
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 279.0
+margin_top = 66.0
+margin_right = 829.0
+margin_bottom = 186.0
+custom_fonts/normal_font = SubResource( 1 )
+tab_size = 5
+text = "SPACE GAME "
+
+[connection signal="button_up" from="BG/Start" to="BG/Start" method="_on_Start_button_up"]

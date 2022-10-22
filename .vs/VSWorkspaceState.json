@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.mono",
+    "\\.mono\\assemblies",
+    "\\.mono\\assemblies\\Release",
+    "\\.mono\\temp",
+    "\\.mono\\temp\\bin"
+  ],
+  "PreviewInSolutionExplorer": false
+}

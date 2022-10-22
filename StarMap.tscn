@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Prefabs/StarMap/Planet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/StarMap/BGs/SM_BG.png" type="Texture" id=2]
+[ext_resource path="res://StarMap.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/StarMap/BGs/SM_BG_filter.png" type="Texture" id=4]
+
+[node name="StarMap" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 514, 287 )
+z_index = 10
+texture = ExtResource( 4 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 514, 287 )
+texture = ExtResource( 2 )
+
+[node name="Planet" parent="BG" instance=ExtResource( 1 )]
